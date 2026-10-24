@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+
+# Flask / local data
+instance/
+*.db
+*.sqlite3
+*.log
+
+# Local env
+.env
+
+# OS
+.DS_Store
+Thumbs.db

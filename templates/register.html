@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - RepurposeAI Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#06060a;--surface:#0e0e14;--card:#12121a;--text:#f4f4f8;--muted:#8e8e9a;--accent:#c4a84d;--accent-glow:rgba(196,168,77,0.2);--border:rgba(255,255,255,0.06);--border-hover:rgba(196,168,77,0.3);}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
+.form-container{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;max-width:400px;width:100%;}
+h1{font-size:24px;font-weight:800;margin-bottom:8px;text-align:center;}
+.sub{color:var(--muted);text-align:center;margin-bottom:32px;font-size:14px;}
+input{width:100%;padding:12px 16px;border-radius:10px;font-size:14px;background:var(--surface);border:1px solid var(--border);color:var(--text);margin-bottom:16px;font-family:inherit;}
+input:focus{outline:none;border-color:var(--accent);}
+input::placeholder{color:var(--muted);}
+button{width:100%;padding:12px;border-radius:10px;font-size:14px;font-weight:600;background:linear-gradient(135deg,var(--accent),#a68b3a);color:#0a0a0e;border:none;cursor:pointer;font-family:inherit;}
+button:hover{box-shadow:0 4px 16px var(--accent-glow);}
+.error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#f87171;padding:12px;border-radius:10px;font-size:14px;margin-bottom:16px;}
+.switch{text-align:center;margin-top:20px;font-size:14px;color:var(--muted);}
+.switch a{color:var(--accent);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="form-container">
+  <h1>Create Account</h1>
+  <p class="sub">Start repurposing content for free</p>
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  <form method="POST">
+    <input type="text" name="name" placeholder="Full name" required>
+    <input type="email" name="email" placeholder="Email address" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Create Account</button>
+  </form>
+  <p class="switch">Already have an account? <a href="/login">Login</a></p>
+</div>
+</body>
+</html>

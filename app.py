@@ -59,6 +59,12 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    """Required by Flask-Login: fetch the User for a session's stored id."""
+    return User.query.get(int(user_id))
+
+
 # ══════════════════════════════════════════════════════════════════════════════
 # DATABASE MODELS
 # ══════════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing - RepurposeAI Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#06060a;--surface:#0e0e14;--card:#12121a;--text:#f4f4f8;--muted:#8e8e9a;--accent:#c4a84d;--accent-glow:rgba(196,168,77,0.2);--green:#22c55e;--green-bg:rgba(34,197,94,0.1);--border:rgba(255,255,255,0.06);--border-hover:rgba(196,168,77,0.3);}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.header-inner{max-width:1400px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;text-decoration:none;color:var(--text);}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#a68b3a);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#0a0a0e;}
+nav{display:flex;gap:28px;font-size:14px;font-weight:500;}
+nav a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+nav a:hover{color:var(--text);}
+main{position:relative;z-index:1;}
+.hero{padding:140px 24px 80px;text-align:center;max-width:900px;margin:0 auto;}
+.hero h1{font-size:clamp(40px,6vw,64px);font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:20px;}
+.hero h1 .accent{background:linear-gradient(135deg,var(--accent),#d4b85c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;max-width:900px;margin:0 auto;padding:0 24px 80px;}
+.pricing-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;text-align:center;position:relative;transition:all 0.25s;}
+.pricing-card.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 20px 60px rgba(0,0,0,0.3);}
+.pricing-card.featured::before{content:'POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#0a0a0e;font-size:10px;font-weight:800;letter-spacing:0.1em;padding:4px 12px;border-radius:999px;}
+.pricing-name{font-size:14px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;}
+.pricing-price{font-size:48px;font-weight:900;color:var(--text);margin-bottom:4px;}
+.pricing-price span{font-size:16px;font-weight:500;color:var(--muted);}
+.pricing-desc{font-size:14px;color:var(--muted);margin-bottom:24px;}
+.pricing-features{list-style:none;margin-bottom:28px;text-align:left;}
+.pricing-features li{padding:8px 0;font-size:14px;color:var(--text);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.pricing-features li:last-child{border-bottom:none;}
+.pricing-features li .check{color:var(--green);font-weight:700;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s;font-family:inherit;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#a68b3a);color:#0a0a0e;font-weight:700;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+.btn-outline:hover{border-color:var(--border-hover);}
+.btn-block{width:100%;justify-content:center;}
+footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center;color:var(--muted);font-size:13px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><div class="logo-icon">R</div> RepurposeAI Studio</a>
+    <nav>
+      <a href="/#features">Features</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/login">Login</a>
+      <a href="/register" class="btn btn-primary">Get Started</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1>Simple, <span class="accent">Transparent</span> Pricing</h1>
+    <p style="color:var(--muted);font-size:19px;">Start free. Scale when you're ready.</p>
+  </section>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-name">Free</div>
+      <div class="pricing-price">$0<span>/mo</span></div>
+      <div class="pricing-desc">For trying things out</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> 5 projects/month</li>
+        <li><span class="check">✓</span> 50 AI generations</li>
+        <li><span class="check">✓</span> 5 platforms per project</li>
+        <li><span class="check">✓</span> Community support</li>
+      </ul>
+      <a href="/register" class="btn btn-outline btn-block">Get Started</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-name">Pro</div>
+      <div class="pricing-price">$29<span>/mo</span></div>
+      <div class="pricing-desc">For serious creators</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> Unlimited projects</li>
+        <li><span class="check">✓</span> 500 AI generations/month</li>
+        <li><span class="check">✓</span> All 10+ platforms</li>
+        <li><span class="check">✓</span> Priority support</li>
+        <li><span class="check">✓</span> Custom brand voice</li>
+        <li><span class="check">✓</span> API access</li>
+      </ul>
+      <a href="/register" class="btn btn-primary btn-block">Start Free Trial</a>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Business</div>
+      <div class="pricing-price">$79<span>/mo</span></div>
+      <div class="pricing-desc">For teams & agencies</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> Everything in Pro</li>
+        <li><span class="check">✓</span> 2000 generations/month</li>
+        <li><span class="check">✓</span> Team collaboration</li>
+        <li><span class="check">✓</span> White-label option</li>
+        <li><span class="check">✓</span> Dedicated support</li>
+        <li><span class="check">✓</span> Custom integrations</li>
+      </ul>
+      <a href="/register" class="btn btn-outline btn-block">Contact Sales</a>
+    </div>
+  </div>
+</main>
+<footer>© 2026 RepurposeAI Studio — Built by NIMBDU. Maximum-effort, zero-waste.</footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Project - RepurposeAI Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#06060a;--surface:#0e0e14;--card:#12121a;--text:#f4f4f8;--muted:#8e8e9a;--accent:#c4a84d;--accent-glow:rgba(196,168,77,0.2);--border:rgba(255,255,255,0.06);--border-hover:rgba(196,168,77,0.3);}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--border);}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;text-decoration:none;color:var(--text);}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#a68b3a);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#0a0a0e;}
+.container{max-width:800px;margin:0 auto;padding:32px 24px;}
+h1{font-size:28px;font-weight:800;margin-bottom:8px;}
+.sub{color:var(--muted);margin-bottom:32px;}
+.form-group{margin-bottom:24px;}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:8px;}
+input,select,textarea{width:100%;padding:12px 16px;border-radius:10px;font-size:14px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:inherit;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);}
+textarea{min-height:200px;resize:vertical;}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238e8e9a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s;font-family:inherit;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#a68b3a);color:#0a0a0e;font-weight:700;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow);}
+.error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#f87171;padding:12px;border-radius:10px;font-size:14px;margin-bottom:16px;}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="/" class="logo"><div class="logo-icon">R</div> RepurposeAI Studio</a>
+  <a href="/dashboard" style="color:var(--muted);text-decoration:none;font-size:14px;">← Back to Dashboard</a>
+</div>
+<div class="container">
+  <h1>New Project</h1>
+  <p class="sub">Paste your content below and AI will repurpose it for 10+ platforms.</p>
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  <form method="POST">
+    <div class="form-group">
+      <label>Project Title (optional)</label>
+      <input type="text" name="title" placeholder="e.g., Blog Post Repurposing">
+    </div>
+    <div class="form-group">
+      <label>Content Type</label>
+      <select name="content_type">
+        <option value="blog">Blog Post / Article</option>
+        <option value="video">Video / YouTube</option>
+        <option value="podcast">Podcast / Audio</option>
+        <option value="interview">Interview</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Your Content</label>
+      <textarea name="original_content" placeholder="Paste your blog post, video transcript, podcast notes, or any content here..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Generate 10+ Formats →</button>
+  </form>
+</div>
+</body>
+</html>

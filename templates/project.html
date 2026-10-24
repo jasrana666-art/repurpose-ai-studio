@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ project.title }} - RepurposeAI Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#06060a;--surface:#0e0e14;--card:#12121a;--text:#f4f4f8;--muted:#8e8e9a;--accent:#c4a84d;--accent-glow:rgba(196,168,77,0.2);--green:#22c55e;--green-bg:rgba(34,197,94,0.1);--blue:#3b82f6;--blue-bg:rgba(59,130,246,0.1);--border:rgba(255,255,255,0.06);--border-hover:rgba(196,168,77,0.3);}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--border);}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;text-decoration:none;color:var(--text);}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#a68b3a);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#0a0a0e;}
+.container{max-width:1200px;margin:0 auto;padding:32px 24px;}
+.back{color:var(--muted);text-decoration:none;font-size:14px;display:inline-block;margin-bottom:24px;}
+.back:hover{color:var(--text);}
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:24px;}
+.platform-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;}
+.platform-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.platform-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;}
+.platform-name{font-size:16px;font-weight:700;}
+.platform-content{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;font-size:14px;line-height:1.6;white-space:pre-wrap;word-break:break-word;}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);cursor:pointer;margin-top:12px;}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="/" class="logo"><div class="logo-icon">R</div> RepurposeAI Studio</a>
+  <a href="/dashboard" style="color:var(--muted);text-decoration:none;font-size:14px;">← Dashboard</a>
+</div>
+<div class="container">
+  <a href="/dashboard" class="back">← Back to Dashboard</a>
+  <h1 style="font-size:28px;font-weight:800;margin-bottom:8px;">{{ project.title }}</h1>
+  <p style="color:var(--muted);margin-bottom:32px;">{{ project.content_type }} • {{ project.created_at.strftime('%b %d, %Y at %H:%M') }}</p>
+  <div class="platform-grid">
+    {% for content in contents %}
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-icon" style="background:{% if content.platform=='twitter' %}rgba(29,155,240,0.15);color:#1d9bf0{% elif content.platform=='linkedin' %}rgba(0,119,181,0.15);color:#0077b5{% elif content.platform=='instagram' %}rgba(225,48,108,0.15);color:#e1306c{% elif content.platform=='tiktok' %}rgba(0,0,0,0.3);color:#fff{% elif content.platform=='newsletter' %}rgba(196,168,77,0.15);color:var(--accent){% else %}rgba(168,85,247,0.15);color:#a855f7{% endif %};">
+          {% if content.platform=='twitter' %}🐦{% elif content.platform=='linkedin' %}💼{% elif content.platform=='instagram' %}📸{% elif content.platform=='tiktok' %}🎵{% elif content.platform=='newsletter' %}📧{% elif content.platform=='youtube_shorts' %}📺{% elif content.platform=='pinterest' %}📌{% elif content.platform=='reddit' %}🤖{% elif content.platform=='threads' %}🧵{% elif content.platform=='medium' %}📝{% else %}📄{% endif %}
+        </div>
+        <div class="platform-name">{{ content.platform.replace('_', ' ').title() }}</div>
+      </div>
+      <div class="platform-content">{{ content.content_text }}</div>
+      <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent)">📋 Copy</button>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>
